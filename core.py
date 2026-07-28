@@ -102,4 +102,4 @@ def build_initial_state(message: str, history: list = []) -> DevMindState:
     )
 
 
-print("✅ DevMind Core loaded")
+print(" DevMind Core loaded")
