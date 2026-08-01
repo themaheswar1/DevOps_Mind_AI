@@ -41,7 +41,7 @@ def create_incident_ticket(title: str, description: str,
         "labels":      ["devmind-auto", "incident", severity.lower()],
     }
 
-    print(f"  📋 Jira ticket created: {ticket_id}")
+    print(f"Jira ticket created: {ticket_id}")
     return ticket
 
 
