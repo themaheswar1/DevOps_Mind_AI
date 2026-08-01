@@ -80,13 +80,13 @@ def send_cicd_notification(repo: str, status: str,
                            failure_reason: str = "") -> bool:
     if conclusion == "success":
         severity = "LOW"
-        header   = "✅ Build Passed"
+        header   = " Build Passed"
     elif conclusion == "failure":
         severity = "HIGH"
-        header   = "❌ Build Failed"
+        header   = " Build Failed"
     else:
         severity = "MEDIUM"
-        header   = "⚠️ Build Status Unknown"
+        header   = " Build Status Unknown"
 
     message = (
         f"*{header}*\n"
@@ -105,7 +105,7 @@ def send_cicd_notification(repo: str, status: str,
 def send_incident_notification(repo: str, severity: str,
                                description: str, jira_ticket: str = "") -> bool:
     message = (
-        f"*🚨 INCIDENT DETECTED*\n"
+        f"*INCIDENT DETECTED*\n"
         f"*Repo:* `{repo}`\n"
         f"*Severity:* {severity}\n"
         f"*Description:*\n{description[:400]}\n"
