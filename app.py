@@ -10,155 +10,249 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 * { font-family: 'Inter', sans-serif !important; }
 
-.stApp { background: #0a0a0f; color: #e0e0e0; }
-.block-container { padding-top: 1.5rem; max-width: 900px; }
+/* ── Background ── */
+.stApp { background: #1c1c1e; color: #e5e5e7; }
+.block-container { padding-top: 2rem; max-width: 920px; }
 
-/* header */
-.devmind-header {
-    padding: 20px 0 10px 0;
-    border-bottom: 1px solid #1a1a2e;
-    margin-bottom: 20px;
+section[data-testid="stSidebar"] {
+    background: #2c2c2e !important;
+    border-right: 1px solid #3a3a3c !important;
 }
-.devmind-title {
-    font-family: 'Space Mono', monospace !important;
-    font-size: 24px !important;
+
+/* ── Header ── */
+.dm-header {
+    background: #2c2c2e;
+    border: 1px solid #3a3a3c;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dm-title {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 22px !important;
     font-weight: 700 !important;
     color: #ffffff !important;
     margin: 0 !important;
-    letter-spacing: -0.5px;
 }
-.devmind-subtitle {
+.dm-sub {
     font-size: 12px;
-    color: #444;
+    color: #8e8e93;
     margin-top: 4px;
-    font-family: 'Space Mono', monospace !important;
+}
+.dm-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #1c1c1e;
+    border: 1px solid #3a3a3c;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: #30d158;
+    font-family: 'JetBrains Mono', monospace !important;
+}
+.dm-dot {
+    width: 7px; height: 7px;
+    background: #30d158;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
 }
 
-/* agent badges */
+/* ── Agent Badges ── */
 .agent-badge {
-    display: inline-block;
-    padding: 3px 12px;
-    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 6px;
     font-size: 11px;
     font-weight: 600;
     margin-bottom: 8px;
-    letter-spacing: 0.5px;
-    font-family: 'Space Mono', monospace !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.3px;
 }
-.badge-pr_agent       { background: #0d1f35; color: #4a9eca; border: 1px solid #1a3a5c; }
-.badge-cicd_agent     { background: #0d2a1a; color: #4aca7e; border: 1px solid #1a4a2e; }
-.badge-infra_agent    { background: #2a1a0d; color: #ca9a4a; border: 1px solid #4a3a1a; }
-.badge-incident_agent { background: #2a0d0d; color: #ca4a4a; border: 1px solid #4a1a1a; }
+.badge-pr_agent       { background: #1c3a5c; color: #64d2ff; border: 1px solid #2c5282; }
+.badge-cicd_agent     { background: #1c3a2c; color: #30d158; border: 1px solid #2c5a3c; }
+.badge-infra_agent    { background: #3a2c1c; color: #ffd60a; border: 1px solid #5a4a2c; }
+.badge-incident_agent { background: #3a1c1c; color: #ff453a; border: 1px solid #5a2c2c; }
 
-/* severity pill */
-.severity-pill {
+/* ── Severity Pills ── */
+.sev-pill {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 2px 10px;
+    border-radius: 20px;
     font-size: 10px;
-    margin-left: 8px;
-    font-family: 'Space Mono', monospace !important;
+    font-weight: 600;
+    margin-left: 6px;
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: 0.5px;
 }
-.pill-LOW      { background: #0d2a1a; color: #4aca7e; }
-.pill-MEDIUM   { background: #2a2a0d; color: #caaa4a; }
-.pill-HIGH     { background: #2a1a0d; color: #ca7a4a; }
-.pill-CRITICAL { background: #2a0d0d; color: #ca4a4a; }
+.sev-LOW      { background: #1c3a2c; color: #30d158; }
+.sev-MEDIUM   { background: #3a3a1c; color: #ffd60a; }
+.sev-HIGH     { background: #3a2a1c; color: #ff9f0a; }
+.sev-CRITICAL { background: #3a1c1c; color: #ff453a; }
 
-/* chat messages */
+/* ── Chat Bubbles ── */
 [data-testid="stChatMessageContent"] {
-    background: #111118 !important;
-    border: 1px solid #1e1e2e !important;
-    border-radius: 6px !important;
-    padding: 14px 16px !important;
+    background: #2c2c2e !important;
+    border: 1px solid #3a3a3c !important;
+    border-radius: 10px !important;
+    padding: 14px 18px !important;
     font-size: 14px !important;
-    line-height: 1.7 !important;
+    line-height: 1.75 !important;
+    color: #e5e5e7 !important;
 }
 
-/* sidebar */
-section[data-testid="stSidebar"] {
-    background: #0d0d14 !important;
-    border-right: 1px solid #1a1a2e !important;
-}
+/* ── Sidebar ── */
 section[data-testid="stSidebar"] > div {
-    padding-top: 1.5rem !important;
+    padding: 1.5rem 1rem !important;
 }
 section[data-testid="stSidebar"] p,
 section[data-testid="stSidebar"] li {
     font-size: 12px !important;
-    color: #666 !important;
-    line-height: 1.6 !important;
+    color: #8e8e93 !important;
+    line-height: 1.7 !important;
 }
 section[data-testid="stSidebar"] h3 {
     font-size: 10px !important;
-    color: #444 !important;
+    color: #636366 !important;
     text-transform: uppercase !important;
     letter-spacing: 1.5px !important;
     font-weight: 600 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 10px !important;
+}
+section[data-testid="stSidebar"] hr {
+    border-color: #3a3a3c !important;
+    margin: 12px 0 !important;
 }
 
-/* metric cards */
+/* ── Metric Cards ── */
 [data-testid="stMetric"] {
-    background: #111118 !important;
-    border: 1px solid #1e1e2e !important;
-    border-radius: 6px !important;
-    padding: 10px !important;
+    background: #1c1c1e !important;
+    border: 1px solid #3a3a3c !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
 }
-[data-testid="stMetricLabel"] {
+[data-testid="stMetricLabel"] p {
     font-size: 10px !important;
-    color: #555 !important;
+    color: #636366 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
 }
 [data-testid="stMetricValue"] {
-    font-size: 20px !important;
-    color: #fff !important;
-    font-family: 'Space Mono', monospace !important;
+    font-size: 22px !important;
+    color: #ffffff !important;
+    font-family: 'JetBrains Mono', monospace !important;
 }
 
-/* input */
+/* ── Input ── */
 textarea[data-testid="stChatInputTextArea"] {
-    background: #111118 !important;
-    border: 1px solid #1e1e2e !important;
-    border-radius: 6px !important;
-    color: #ddd !important;
-    font-size: 13px !important;
+    background: #2c2c2e !important;
+    border: 1px solid #3a3a3c !important;
+    border-radius: 10px !important;
+    color: #e5e5e7 !important;
+    font-size: 14px !important;
+}
+.stChatInputContainer {
+    border-top: 1px solid #3a3a3c !important;
+    background: #1c1c1e !important;
+    padding-top: 12px !important;
 }
 
-/* clear button */
+/* ── Button ── */
 .stButton button {
-    background: transparent !important;
-    border: 1px solid #222 !important;
-    color: #555 !important;
+    background: #2c2c2e !important;
+    border: 1px solid #3a3a3c !important;
+    color: #8e8e93 !important;
     font-size: 11px !important;
-    border-radius: 4px !important;
-    font-family: 'Space Mono', monospace !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    transition: all 0.2s !important;
 }
 .stButton button:hover {
-    border-color: #444 !important;
-    color: #888 !important;
+    border-color: #636366 !important;
+    color: #e5e5e7 !important;
 }
 
-/* divider */
-hr { border-color: #1a1a2e !important; }
+
+/* kill white toolbar */
+header[data-testid="stHeader"] {
+    background: #1c1c1e !important;
+    border-bottom: 1px solid #3a3a3c !important;
+}
+
+/* kill white bottom bar */
+.stBottom, .stBottom > div {
+    background: #1c1c1e !important;
+    border-top: 1px solid #3a3a3c !important;
+}
+
+/* kill any white gaps */
+.stApp > div:first-child {
+    background: #1c1c1e !important;
+}
+
+/* deploy button area */
+[data-testid="stToolbar"] {
+    background: #1c1c1e !important;
+}
+
+/* main content area top */
+[data-testid="stAppViewContainer"] {
+    background: #1c1c1e !important;
+}
+
+/* chat input bottom container */
+[data-testid="stChatInput"] {
+    background: #1c1c1e !important;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1c1c1e; }
+::-webkit-scrollbar-thumb { background: #3a3a3c; border-radius: 3px; }
+
+/* ── Action caption ── */
+.action-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #636366;
+    margin-top: 6px;
+    padding: 4px 8px;
+    background: #1c1c1e;
+    border-radius: 4px;
+    border-left: 2px solid #3a3a3c;
+}
+
+/* ── Example items ── */
+.example-item {
+    padding: 6px 10px;
+    background: #1c1c1e;
+    border: 1px solid #3a3a3c;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #8e8e93;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+}
 </style>
 """, unsafe_allow_html=True)
 
 
-# Header
-st.markdown(f"""
-<div class="devmind-header">
-    <div class="devmind-title">🤖 DevMind</div>
-    <div class="devmind-subtitle">
-        AI-Powered DevOps Agent &nbsp;·&nbsp;
-        monitoring <code>{os.getenv('GITHUB_REPO', 'your-repo')}</code>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# Session State
+# ── Session State ─────────────────────────────────────────────────────────────
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -166,7 +260,7 @@ if "history" not in st.session_state:
     st.session_state.history = []
 
 if "graph" not in st.session_state:
-    with st.spinner("Loading DevMind agents..."):
+    with st.spinner("Initializing DevMind agents..."):
         st.session_state.graph = build_graph()
 
 if "active_agent" not in st.session_state:
@@ -180,35 +274,52 @@ if "session_stats" not in st.session_state:
         "incidents":    0,
     }
 
-# Sidebar
+# ── Header ────────────────────────────────────────────────────────────────────
+repo = os.getenv("GITHUB_REPO", "your-repo")
+st.markdown(f"""
+<div class="dm-header">
+    <div>
+        <div class="dm-title">🤖 DevMind</div>
+        <div class="dm-sub">AI-Powered DevOps Automation Agent &nbsp;·&nbsp; monitoring <code style="background:#1c1c1e;padding:2px 6px;border-radius:4px;color:#64d2ff;">{repo}</code></div>
+    </div>
+    <div class="dm-status">
+        <div class="dm-dot"></div>
+        5 agents online
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
 
-    # Session Stats
-    st.markdown("### Session Stats")
+    st.markdown("### 📊 Session Stats")
     stats = st.session_state.session_stats
     c1, c2 = st.columns(2)
     c1.metric("PR Reviews",   stats["pr_reviews"])
-    c2.metric("CI/CD Checks", stats["cicd_checks"])
-    c1.metric("Infra Checks", stats["infra_checks"])
+    c2.metric("CI/CD",        stats["cicd_checks"])
+    c1.metric("Infra",        stats["infra_checks"])
     c2.metric("Incidents",    stats["incidents"])
 
     st.divider()
 
-    # Try These 
-    st.markdown("### Try These")
-    st.markdown("""
-- Review the latest PR
-- What is the CI/CD pipeline status?
-- Check infrastructure health
-- Any active incidents?
-- Review PR #3
-- Is the build passing?
-""")
+    st.markdown("### 💬 Try These")
+    examples = [
+        "Review the latest PR",
+        "CI/CD pipeline status?",
+        "Check infrastructure health",
+        "Any active incidents?",
+        "Review PR #1",
+        "Is the build passing?",
+    ]
+    for ex in examples:
+        st.markdown(
+            f'<div class="example-item">→ {ex}</div>',
+            unsafe_allow_html=True
+        )
 
     st.divider()
 
-    # Clear 
-    if st.button("clear conversation"):
+    if st.button("🗑 clear conversation"):
         st.session_state.messages      = []
         st.session_state.history       = []
         st.session_state.active_agent  = None
@@ -219,20 +330,20 @@ with st.sidebar:
         st.rerun()
 
     st.markdown(
-        f'<p style="font-size:10px;color:#333;margin-top:8px;">'
-        f'{len(st.session_state.messages)} messages this session</p>',
+        f'<p style="font-size:10px;color:#3a3a3c;margin-top:10px;text-align:center;">'
+        f'{len(st.session_state.messages)} messages · DevMind v1.0</p>',
         unsafe_allow_html=True
     )
 
-# Agent Labels
+# ── Agent config ──────────────────────────────────────────────────────────────
 AGENT_LABELS = {
-    "pr_agent":       "◈ PR REVIEW",
-    "cicd_agent":     "◉ CI/CD",
-    "infra_agent":    "◈ INFRASTRUCTURE",
+    "pr_agent":       "⬡ PR REVIEW",
+    "cicd_agent":     "⬡ CI/CD",
+    "infra_agent":    "⬡ INFRASTRUCTURE",
     "incident_agent": "⚠ INCIDENT",
 }
 
-# Render Past Messages
+# ── Render Past Messages ──────────────────────────────────────────────────────
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         if msg["role"] == "assistant":
@@ -241,20 +352,23 @@ for msg in st.session_state.messages:
 
             st.markdown(
                 f'<span class="agent-badge badge-{agent}">'
-                f'{AGENT_LABELS.get(agent, "◈ AGENT")}'
+                f'{AGENT_LABELS.get(agent, "⬡ AGENT")}'
                 f'</span>'
-                f'<span class="severity-pill pill-{severity}">'
+                f'<span class="sev-pill sev-{severity}">'
                 f'{severity}</span>',
                 unsafe_allow_html=True
             )
             st.markdown(msg["content"])
 
             if msg.get("action"):
-                st.caption(f"↳ {msg['action']}")
+                st.markdown(
+                    f'<div class="action-line">↳ {msg["action"]}</div>',
+                    unsafe_allow_html=True
+                )
         else:
             st.markdown(msg["content"])
 
-# Chat Input 
+# ── Chat Input ────────────────────────────────────────────────────────────────
 if prompt := st.chat_input("Ask DevMind — review PRs, check pipelines, analyze incidents..."):
 
     with st.chat_message("user"):
@@ -272,23 +386,25 @@ if prompt := st.chat_input("Ask DevMind — review PRs, check pipelines, analyze
 
         agent    = result.get("agent", "pr_agent")
         severity = result.get("severity", "LOW")
-        response = result.get("response", "I could not process that request.")
+        response = result.get("response", "Could not process that request.")
         action   = result.get("action_taken", "")
 
         st.markdown(
             f'<span class="agent-badge badge-{agent}">'
-            f'{AGENT_LABELS.get(agent, "◈ AGENT")}'
+            f'{AGENT_LABELS.get(agent, "⬡ AGENT")}'
             f'</span>'
-            f'<span class="severity-pill pill-{severity}">'
+            f'<span class="sev-pill sev-{severity}">'
             f'{severity}</span>',
             unsafe_allow_html=True
         )
         st.markdown(response)
 
         if action:
-            st.caption(f"↳ {action}")
+            st.markdown(
+                f'<div class="action-line">↳ {action}</div>',
+                unsafe_allow_html=True
+            )
 
-    # save
     st.session_state.messages.append({
         "role":     "assistant",
         "content":  response,
@@ -297,7 +413,6 @@ if prompt := st.chat_input("Ask DevMind — review PRs, check pipelines, analyze
         "action":   action,
     })
 
-    # update stats
     stats_map = {
         "pr_agent":       "pr_reviews",
         "cicd_agent":     "cicd_checks",
