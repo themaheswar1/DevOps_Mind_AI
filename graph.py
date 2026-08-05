@@ -47,7 +47,7 @@ def build_graph():
 
 def run_turn(message: str, history: List[dict], graph) -> dict:
     initial_state = build_initial_state(message, history)
-    result        = graph.invoke(initial_state)
+    result = graph.invoke(initial_state)
     return result
 
 

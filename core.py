@@ -30,6 +30,7 @@ class DevMindState(TypedDict):
     severity:     str
     history:      List[dict]
     response:     str
+    agent:        str
 
 
 # ── LLM Call ──────────────────────────────────────────────────────────────────
@@ -99,6 +100,7 @@ def build_initial_state(message: str, history: list = []) -> DevMindState:
         severity     = "LOW",
         history      = history,
         response     = "",
+        agent        = "",
     )
 
 
