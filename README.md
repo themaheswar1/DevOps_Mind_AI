@@ -1,4 +1,4 @@
-# 🤖 DevMind — AI-Powered DevOps Agent
+# DevOpsMind — AI-Powered DevOps Agent
 
 ```
 ██████╗ ███████╗██╗   ██╗███╗   ███╗██╗███╗   ██╗██████╗ 
