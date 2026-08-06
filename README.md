@@ -271,9 +271,6 @@ feature/* → dev → master
 
 **Mahesh** — [@themaheswar1](https://github.com/themaheswar1)
 
-Built as Project 2 of 3 in an AI Engineering portfolio series.
-Project 1 → [Multi-Agent Customer Support System](https://github.com/themaheswar1/Multi-Agent-Customer-Support-System)
-
 ---
 
 *Built by someone who believed agents should do things, not just talk about them.*
