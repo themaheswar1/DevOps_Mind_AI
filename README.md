@@ -41,7 +41,7 @@ You didn't click anything. DevMind did it.
 
 ---
 
-## Live Demo
+## Try DevOps Mind
 
 > 🚀 **[Launch DevMind →](https://your-deployment-link)**
 >
